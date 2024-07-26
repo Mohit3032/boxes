@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 50px;
+        }
+
+        .list button {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cards {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 0 50px;
+        }
+
+        .card1 {
+            height: 150px;
+            width: 150px;
+            border: 1px solid black;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .active {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="list">
+        <button class="active" onclick="toggleCategory('men')">Mens</button>
+        <button onclick="toggleCategory('women')">Womens</button>
+        <button onclick="toggleCategory('kid')">Kids</button>
+        <button onclick="toggleCategory('animal')">Animals</button>
+        <button onclick="toggleCategory('bird')">Birds</button>
+    </div>
+    <div class="cards">
+        <div class="card1 men">men1</div>
+        <div class="card1 men">men2</div>
+        <div class="card1 men">men3</div>
+        <div class="card1 men">men4</div>
+        <div class="card1 men">men5</div>
+        <div class="card1 women hidden">women1</div>
+        <div class="card1 women hidden">women2</div>
+        <div class="card1 women hidden">women3</div>
+        <div class="card1 women hidden">women4</div>
+        <div class="card1 women hidden">women5</div>
+        <div class="card1 kid hidden">kid1</div>
+        <div class="card1 kid hidden">kid2</div>
+        <div class="card1 kid hidden">kid3</div>
+        <div class="card1 kid hidden">kid4</div>
+        <div class="card1 kid hidden">kid5</div>
+        <div class="card1 animal hidden">animal1</div>
+        <div class="card1 animal hidden">animal2</div>
+        <div class="card1 animal hidden">animal3</div>
+        <div class="card1 animal hidden">animal4</div>
+        <div class="card1 animal hidden">animal5</div>
+        <div class="card1 bird hidden">bird1</div>
+        <div class="card1 bird hidden">bird2</div>
+        <div class="card1 bird hidden">bird3</div>
+        <div class="card1 bird hidden">bird4</div>
+        <div class="card1 bird hidden">bird5</div>
+    </div>
+    <script>
+        function toggleCategory(category) {
+
+            const cards = document.querySelectorAll(`.card1.${category}`);
+  
+            const button = document.querySelector(`button[onclick="toggleCategory('${category}')"]`);
+            
+          
+            const isActive = button.classList.contains('active');
+            
+           
+            button.classList.toggle('active');
+            
+        
+            cards.forEach(card => {
+                if (isActive) {
+                    card.classList.add('hidden');
+                } else {
+                    card.classList.remove('hidden');
+                }
+            });
+        }
+
+     
+        document.querySelectorAll('.card1.men').forEach(card => {
+            card.classList.remove('hidden');
+        });
+        document.querySelector('button[onclick="toggleCategory(\'men\')"]').classList.add('active');
+    </script>
+</body>
+</html>
